@@ -11,6 +11,7 @@ const main = async () => {
     );
   } catch (err) {
     console.error('Erro connected database or running server');
+    console.error(err);
   }
 };
 

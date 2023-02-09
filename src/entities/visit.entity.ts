@@ -1,24 +1,24 @@
-import {Column, Entity, JoinColumn, ManyToOne} from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
-import {BaseEntity} from "../helpers";
-import {Visitor} from "./visitor.entity";
+import { BaseEntity } from '../helpers';
+import { Visitor } from './visitor.entity';
 
 @Entity('visits')
 export class Visit extends BaseEntity {
-  @Column({type: "varchar", length: 3})
+  @Column({ type: 'varchar', length: 3 })
   badge: string;
 
-  @Column({type: "varchar", length: 20})
+  @Column({ type: 'varchar', length: 20 })
   secretary: string;
 
-  @Column({type: "boolean"})
+  @Column({ type: 'boolean', default: false })
   status: boolean;
 
-  @ManyToOne(() => Visitor, visitor => visitor.visits, {cascade: true})
+  @ManyToOne(() => Visitor, (visitor) => visitor.visits, { cascade: true })
   @JoinColumn({
     name: 'visitor_id',
     referencedColumnName: 'id',
-    foreignKeyConstraintName: 'fk_visitor'
+    foreignKeyConstraintName: 'fk_visitor',
   })
-  visitor: Visitor
+  visitor: Visitor;
 }

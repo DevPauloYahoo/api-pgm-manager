@@ -11,7 +11,7 @@ export class Visit extends BaseEntity {
   @Column({ type: 'varchar', length: 20 })
   secretary: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: false, nullable: true })
   status: boolean;
 
   @ManyToOne(() => Visitor, (visitor) => visitor.visits, { cascade: true })
